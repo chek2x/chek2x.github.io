@@ -7,9 +7,16 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json());
 
+let greet = [{id : 'hello', message : 'Hello, World!'}];
+
 // Example route
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
+app.get('/api/greet', (req, res) => {
+    res.json(greet);
+});
+
+app.post('/api/greet', (req, res) => {
+    const newGreet = req.body;
+    greet.push(newGreet);
 });
 
 // Start server
