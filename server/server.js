@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const predictor = require('./model')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,6 +25,11 @@ app.delete('/api/remove-greet/:id', (req, res) => {
     const { id } = req.params;
     greet = greet.filter(greet => greet.id !== id);
     return res.status(200).json(greet);
+});
+
+app.get('/result', (req, res) => {
+    const result = predictor();
+    return res.status(200).send(result);
 });
 
 // Start server

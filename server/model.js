@@ -9,7 +9,9 @@ let options = {
     q : 10
 };
 
-let trainSet = json('data/energy_consumption.json');
+// let trainSet = ;
 
 const autoarima = new ARIMA(options).fit(trainSet);
 const [pred, err] = autoarima.predict(5);
+
+return pred;
